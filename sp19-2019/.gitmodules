@@ -1,0 +1,6 @@
+[submodule "skeleton"]
+	path = skeleton
+	url = https://github.com/Berkeley-CS61B/skeleton-sp19.git
+[submodule "skeleton-test"]
+	path = skeleton-test
+	url = https://github.com/Berkeley-CS61B/skeleton-sp19.git
