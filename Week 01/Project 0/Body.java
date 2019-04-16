@@ -53,4 +53,24 @@ public class Body {
         return this.calcForceExertedBy(from) * dy / r;
     }
 
+    //add calcNetForceExertedByX and calcNetForceExertedByY
+    public double calcNetForceExertedByX(Body[] bodyArray) {
+        double forceNet = 0;
+        for (Body b : bodyArray) {
+            if (!b.equals(this)) {
+                forceNet += this.calcForceExertedByX(b);
+            }
+        }
+        return forceNet;
+    }
+
+    public double calcNetForceExertedByY(Body[] bodyArray) {
+        double forceNet = 0;
+        for (Body b : bodyArray) {
+            if (!b.equals(this)) {
+                forceNet += this.calcForceExertedByY(b);
+            }
+        }
+        return forceNet;
+    }
 }
