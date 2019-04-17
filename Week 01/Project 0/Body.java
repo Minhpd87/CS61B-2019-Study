@@ -73,4 +73,24 @@ public class Body {
         }
         return forceNet;
     }
+
+    //add method that determines how much forces exerted on the body will cause that body to accelerate
+    //and the resulting change in the body's velocity and position in a small period of time dt.
+    //for eg: sammh.update(0.005, 10, 3) would adjust the velocity and position if a x force of 10 newtons and a y force
+    // of 3 newtons were applied for 0.005 seconds
+
+    public void update(double dt, double fX, double fY) {
+        //calculate the acceleration
+        double aX = fX / this.mass;
+        double aY = fY / this.mass;
+
+        //calculate / update the new velocity
+        this.xxVel = this.xxVel + dt * aX;
+        this.yyVel = this.yyVel + dt * aY;
+
+        //calculate / update new position
+        this.xxPos = this.xxPos + dt * this.xxVel;
+        this.yyPos = this.yyPos + dt * this.yyVel;
+    }
+
 }
