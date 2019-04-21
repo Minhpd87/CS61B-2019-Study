@@ -56,6 +56,9 @@ public class NBody {
 
         //Draw the image starfield.jpg
         StdDraw.picture(0, 0, "./images/starfield.jpg");
+
+        StdAudio.play("./audio/2001.mid");
+
         for (Body b : bodyArray) {
             b.draw();
         }
@@ -85,7 +88,6 @@ public class NBody {
             for (Body b : bodyArray) {
                 b.draw();
             }
-
             StdDraw.show();
             StdDraw.pause(10);
 
