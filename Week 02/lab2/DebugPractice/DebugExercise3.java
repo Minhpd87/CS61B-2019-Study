@@ -10,7 +10,7 @@ public class DebugExercise3 {
             double cost = in.readDouble();
             int numAvailable = in.readInt();
             if (foodType.equals("turnip")) {
-                int newTotal = totalTurnips + numAvailable;
+                int newTotal = totalTurnips + numAvailable; //the problem was there a negative available number at kroger store kroger turnip 0.45 -387128732
                 totalTurnips = newTotal;
             }
             in.readLine();
