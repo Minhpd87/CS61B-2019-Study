@@ -1,0 +1,19 @@
+2) If doubles are more versatile than ints, why don’t we always use them? Are there any disadvantages to doing this?
+
+Because Integer are exact values so we don't lose information when doing calculations also they takes less memory
+so if we don't need to use doulbe then we don't
+
+3) How much does the memory cost differ between the storing of an address of a 32 entry int array and a 300 entry int array?
+
+A 32 entry int[] array
+
+= 32 * 4 bytes for each int = 128 bytes
+
+A 300 entry int[] array
+
+= 300 * 4 bytes for each int = 1200 bytes
+
+so the difference is 1200 - 128 = 1072 bytes
+
+If we are talking about the address of the array as in the address referenced to the array location
+then they are the same, there is no difference. Always a box size of 64-bit for reference type.
