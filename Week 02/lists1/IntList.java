@@ -66,7 +66,7 @@ public class IntList {
         int index = 0;
         int result = 0;
         while (index <= i) {
-            result = p.first; //result always the item in the IntList
+            result = p.first; //result always the item in the IntList which is first
             p = p.rest; //if reach this line, meaning we are not the the required i yet, so we moved to the next intList
             index++;
         }
