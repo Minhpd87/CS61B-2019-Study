@@ -5,7 +5,7 @@ import java.util.Formatter;
  * with a large number of additional methods.
  *
  * @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
- *         [Do not modify this file.]
+ * [Do not modify this file.]
  */
 public class IntList {
     /**
@@ -29,7 +29,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
 
@@ -82,16 +82,22 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        if (A == null) {
-            return B;
-        } else {
-            IntList test = A;
-            while (test.rest != null) {
-                test = test.rest;
-            }
-            test.rest = B;
+        IntList p = A;          //run iteratively
+        while (p.rest != null) {
+            p = p.rest; //basically we move until we reached the last item in the list
         }
-        return A;
+        p.rest = B; //if reached this line meaning we have reached the last item, so to add B to the list
+        //we just need to change the rest to the IntList B;
+        return A; //return the result
+
+//        //RECURSIVELY
+//        if (A == null) {
+//            return B;
+//        }
+//        else {
+//            A.rest = dcatenate(A.rest, B);
+//        }
+//        return A;
     }
 
     /**
@@ -100,35 +106,45 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        //RECURSIVELY
+//        if (A == null) {
+//            return B;
+//        }
+//        IntList result = new IntList(A.first, catenate(A.rest, B));
+//        return result;
+
+        //ITERATIVELY
+        //The goal is create a new IntList from every item from A (the A.first value)
+        //Remember the IntList declaration
+        // IntList L = new IntList(5, null);
+        // L.rest = new IntList(10, null);
+        // L.rest.rest = new IntList(15, null);
+        //When we reach L.rest.rest, we set L.rest.rest.rest to B to connect two lists A and B
+        // we follow the same principle
+
+        IntList p = A; //p point to IntList A
+        //create new IntList with first item of A which is p.first, now we need to create new IntList for result.rest ...
+        IntList result = new IntList(p.first, null);
+
+        IntList p2 = result; //set this so we can point to result.rest without losing pointer to the
+        //original result IntList
+        p = p.rest; //point p to p.rest so p.first will become p.rest.first which is next item in A
+
+        //Declaration of the IntList rest of result
+        while (p != null) { //when p is null meaning reaching last item of A
+            p2.rest = new IntList(p.first, null); //this is L.rest, L.rest.rest, L.rest.rest.rest ..
+            p = p.rest; //move p to the next item of A IntList, so the next p.first will
+            //actually be p.rest.first which is the second item in A
+            p2 = p2.rest; //change this so new IntList created are the rest list of result;
+            //the last p2 is a IntList that contains last item of A and a null IntList
+        }
+        //when we are out of the loop
+        //we are at the last item of A
+        //the rest list of the last IntList in A is null and p2.rest point to it so
+        p2.rest = B; //we at the last item of A, so we set the rest list to B to connect two lists
+        return result;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
-     * will be introduced later in the course or feature some form of advanced
-     * trickery which we implemented to help make your life a little easier for
-     * the lab.
-     */
-
-    @Override
-    public int hashCode() {
-        return first;
-    }
 
     /**
      * Returns a new IntList containing the ints in ARGS. You are not
@@ -148,6 +164,18 @@ public class IntList {
             p.rest = new IntList(args[k], null);
         }
         return result;
+    }
+
+    /**
+     * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
+     * will be introduced later in the course or feature some form of advanced
+     * trickery which we implemented to help make your life a little easier for
+     * the lab.
+     */
+
+    @Override
+    public int hashCode() {
+        return first;
     }
 
     /**
