@@ -74,5 +74,51 @@ public class Lists1Exercises {
         System.out.println(L.get(0));
         System.out.println(L.get(1));
         System.out.println(L.get(2));
+
+        IntList Z = square(L);
+        System.out.println(Z.get(0));
+        System.out.println(Z.get(1));
+        System.out.println(Z.get(2));
+    }
+
+    public static IntList square(IntList L) {
+//        if (L == null) {
+//            return L;
+//        } else {
+//            IntList rest = square(L.rest);
+//            IntList M = new IntList(L.first * L.first, rest);
+//            return M;
+//        }
+
+        //iteratively
+        IntList p = L;
+        IntList result = new IntList(L.first * L.first, null);
+        IntList p2 = result;
+        p = p.rest;
+
+        while (p != null) {
+            p2.rest = new IntList(p.first * p.first, null);
+            p = p.rest;
+            p2 = p2.rest;
+        }
+        return result;
+
+    }
+
+    public static IntList squareDestructive(IntList L) {
+        IntList p = L;
+        while (p != null) {
+            p.first = p.first * p.first;
+            p = p.rest;
+        }
+        return L;
+
+        //recursively
+//        if (L == null) {
+//            return L;
+//        } else {
+//            L.first *= L.first; //this change the first item in L
+//            squareDestructive(L.rest); //do the next item
+//        }
     }
 }

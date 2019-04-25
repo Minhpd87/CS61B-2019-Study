@@ -23,6 +23,31 @@ public class IntList {
         System.out.println("First item: " + L.iterativeGet(0));
         System.out.println("Second item: " + L.iterativeGet(1));
         System.out.println("Third item: " + L.iterativeGet(2));
+
+        L.addFirst(3333);
+        System.out.println(L.get(0));
+        System.out.println(L.get(1));
+        System.out.println(L.get(2));
+        System.out.println(L.get(3));
+    }
+
+
+    public void addFirst(int x) {
+        //clone the list
+        IntList p = this.rest;
+        IntList newList = new IntList(this.first, null);
+        IntList temp = newList;
+        while (p != null) {
+            temp.rest = new IntList(p.first, null);
+            p = p.rest;
+            temp = temp.rest;
+        }
+        //add x to the front of newList
+        newList = new IntList(x, newList);
+
+        //Mutate the original list to new List data
+        this.first = newList.first;
+        this.rest = newList.rest;
     }
 
     /**
