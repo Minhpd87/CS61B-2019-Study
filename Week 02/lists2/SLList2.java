@@ -1,5 +1,5 @@
 public class SLList2 {
-    public IntNode first;
+    private IntNode first;
 
     public SLList2(int x) {
         first = new IntNode(x, null);
