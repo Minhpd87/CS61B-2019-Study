@@ -1,14 +1,21 @@
-public class SLList2 {
-    private IntNode first;
+public class SLList3 {
+    //private IntNode first;
     private int listSize;
+    private IntNode sentinel;
 
-    public SLList2() { //Empty list declaration
-        first = null;
+    public SLList3() { //Empty list declaration
+        /* basically sentinel is the very first item in the list
+        but it'll be not considered by the user using this SLList class
+        so sentinel actually acts as a pointer for the very first item
+         */
+        sentinel = new IntNode(63, null);
         listSize = 0;
+
     }
 
-    public SLList2(int x) {
-        first = new IntNode(x, null);
+    public SLList3(int x) {
+        sentinel = new IntNode(63, null);
+        sentinel.next = new IntNode(x, null);
         listSize = 1; //for caching the size, so it increase everytime new item gets added
     }
 
@@ -25,20 +32,24 @@ public class SLList2 {
 
     /* add an item to the front of the list */
     public void addFirst(int x) {
-        first = new IntNode(x, first);
+        /* when adding first
+        we are adding the item to the sentinel.next IntNode
+         */
+        sentinel.next = new IntNode(x, sentinel.next); //sentinel.next becomes second item in the list thats why 2nd parameter
         listSize++;
         /* new x become the first item, and the old list IntNode become the rest of the list */
     }
 
     /* get the first item in the list */
     public int getFirst() {
-        return first.item;
+        //first's item becomes sentinel.next's item
+        return sentinel.next.item;
     }
 
     /* Add an item to the end of the list */
     public void addLast(int x) {
         //getting to next (IntNode) of the last item in the original list
-        IntNode List = first; //use this to access the IntNode in the SSList, IntNode = first.next
+        IntNode List = sentinel; //use this to access the IntNode in the SSList, IntNode = first.next
         while (List.next != null) { //loop stop when List.next = null meaning reached end item
             List = List.next; //cycle through each IntNode in the SSLIST
         }
@@ -49,7 +60,7 @@ public class SLList2 {
     /* Return the size of the List */
     public int size() {
         int size = 1; //start at 1 because we start increasing size from the next item in the SSList
-        IntNode List = first;
+        IntNode List = sentinel.next;
         while (List.next != null) {
             size++;
             List = List.next;
