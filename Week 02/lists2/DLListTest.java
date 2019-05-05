@@ -1,9 +1,9 @@
-public class SLList3 {
+public class DLListTest {
     //private IntNode first;
     private int listSize;
     private IntNode sentinel;
 
-    public SLList3() { //Empty list declaration
+    public DLListTest() { //Empty list declaration
         /* basically sentinel is the very first item in the list
         but it'll be not considered by the user using this SLList class
         so sentinel actually acts as a pointer for the very first item
@@ -13,10 +13,11 @@ public class SLList3 {
 
     }
 
-    public SLList3(int x) {
+    public DLListTest(int x) {
         sentinel = new IntNode(63, null);
         sentinel.next = new IntNode(x, null);
-        listSize = 1; //for caching the size, so it increase everytime new item gets added
+        listSize = 1; //for caching the size, so it increase every time new item gets added
+
     }
 
     public static void main(String[] args) {
@@ -37,6 +38,7 @@ public class SLList3 {
          */
         sentinel.next = new IntNode(x, sentinel.next); //sentinel.next becomes second item in the list thats why 2nd parameter
         listSize++;
+
         /* new x become the first item, and the old list IntNode become the rest of the list */
     }
 
@@ -74,10 +76,12 @@ public class SLList3 {
     private static class IntNode {
         public int item;
         public IntNode next;
+        public IntNode prev;
 
         public IntNode(int i, IntNode n) {
             item = i;
             next = n;
+            prev = this; //the prev pointer should be this one? WRONG>???
         }
     }
 }
