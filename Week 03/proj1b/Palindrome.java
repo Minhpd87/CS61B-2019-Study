@@ -9,7 +9,13 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-
+        Deque<Character> charList = wordToDeque(word);
+        //base case
+        if (charList.size() == 0 || charList.size() == 1) {
+            return true;
+        } else if (cc.equalChars(charList.removeFirst(), charList.removeLast())) { //recursive run
+            return isPalindrome(dequeToWord(charList), cc);
+        }
         return false;
     }
 

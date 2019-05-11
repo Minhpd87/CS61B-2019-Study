@@ -27,5 +27,12 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("mama"));
         assertFalse(palindrome.isPalindrome("xdddd"));
     }
+
+    @Test
+    public void testPaldindromeByN() {
+        CharacterComparator offbyN = new OffByN(1);
+        assertTrue(palindrome.isPalindrome("flake", offbyN));
+
+    }
 }
 //     Uncomment this class once you've created your Palindrome class. */
