@@ -137,6 +137,7 @@ public class ArrayDeque<T> implements Deque<T> {
         test.removeFirst(); //will shrink the array here
     }
 
+    @Override
     public void printDeque() {
         if (isEmpty()) {
             System.out.println("There is no item in the list");
@@ -166,6 +167,7 @@ public class ArrayDeque<T> implements Deque<T> {
         return index;
     }
 
+    @Override
     public void addFirst(T item) {
         if (size == itemsArray.length) {
             resize(size * resizeFactor);
@@ -176,6 +178,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
     }
 
+    @Override
     public void addLast(T item) {
         if (size == itemsArray.length) {
             resize(size * resizeFactor);
@@ -186,6 +189,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
     }
 
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -202,6 +206,7 @@ public class ArrayDeque<T> implements Deque<T> {
         return currentFirstItem;
     }
 
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -217,6 +222,7 @@ public class ArrayDeque<T> implements Deque<T> {
         return currentLastItem;
     }
 
+    @Override
     public T get(int index) {
         if (index > size) {
             return null;
@@ -234,10 +240,12 @@ public class ArrayDeque<T> implements Deque<T> {
         return this.usage;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public int size() {
         return size;
     }
