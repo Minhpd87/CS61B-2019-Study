@@ -1,5 +1,5 @@
 public class WordUtils2 {
-    public static String longest(SLList<String> stringList) {
+    public static String longest(List61B<String> stringList) {
         String longest = stringList.get(0);
         for (int i = 1; i < stringList.size(); i++) {
             if (longest.length() < stringList.get(i).length()) {
