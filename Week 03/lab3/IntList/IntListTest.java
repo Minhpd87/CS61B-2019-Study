@@ -1,6 +1,7 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class IntListTest {
 
@@ -9,6 +10,28 @@ public class IntListTest {
      * method. The main point of this is to convince you that
      * assertEquals knows how to handle IntLists just fine.
      */
+
+    @Test
+    public void testReverse() {
+
+        IntList input = IntList.of(1, 2, 3);
+        IntList expected = IntList.of(3, 2, 1);
+
+        //Test if return a reversed list
+        IntList actual = IntList.reverse(input);
+        assertEquals(expected, actual);
+
+        //Test if list has been tampered with for non destructive method
+        assertEquals(input, IntList.of(1, 2, 3));
+
+        //for destructive function
+        //assertNotEquals(input, IntList.of(1, 2, 3));
+
+        //Test if handle null properly
+        input = null;
+        actual = IntList.reverse(input);
+        assertEquals(null, actual);
+    }
 
     @Test
     public void testList() {
@@ -67,7 +90,7 @@ public class IntListTest {
     }
 
     /** If you're running this from the command line, you'll need
-      * to add a main method. See ArithmeticTest.java for an
-      * example. */
+     * to add a main method. See ArithmeticTest.java for an
+     * example. */
 
 }

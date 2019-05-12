@@ -34,6 +34,34 @@ public class IntList {
     }
 
     /**
+     * Return a reversed list
+     */
+    public static IntList reverse(IntList A) {
+//        if (A == null) {
+//            return null;
+//        } else {
+//            IntList result = new IntList(A.first, null);
+//            A = A.rest;
+//            while (A != null) {
+//                result = new IntList(A.first, result);
+//                A = A.rest;
+//            }
+//            return result;
+//        }
+        //shorter version
+        IntList result;
+        for (result = null; A != null; A = A.rest) {
+            result = new IntList(A.first, result);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        IntList A = IntList.of(3, 2, 1);
+        IntList B = reverse(A);
+    }
+
+    /**
      * Returns a list equal to L with all elements squared. Destructive.
      */
     public static void dSquareList(IntList L) {
